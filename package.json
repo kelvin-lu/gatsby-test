@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "prettier": "2.1.2",
-    "tailwindcss": "^2.0.1"
+    "tailwindcss": "^2.0.1",
+    "ts-migrate": "^0.1.10"
   },
   "keywords": [
     "gatsby"

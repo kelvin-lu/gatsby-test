@@ -5,19 +5,15 @@ type OwnProps = {
     siteTitle?: string;
 };
 
-// @ts-expect-error ts-migrate(2456) FIXME: Type alias 'Props' circularly references itself.
-type Props = OwnProps & typeof Header.defaultProps;
+type Props = OwnProps;
 
-// @ts-expect-error ts-migrate(7022) FIXME: 'Header' implicitly has type 'any' because it does... Remove this comment to see the full error message
-const Header = ({ siteTitle }: Props) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+const Header = ({ siteTitle = '' }: Props) => (
   <header
     style={{
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
   >
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <div
       style={{
         margin: `0 auto`,
@@ -25,9 +21,7 @@ const Header = ({ siteTitle }: Props) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <h1 style={{ margin: 0 }}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <Link
           to="/"
           style={{
@@ -41,9 +35,5 @@ const Header = ({ siteTitle }: Props) => (
     </div>
   </header>
 )
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

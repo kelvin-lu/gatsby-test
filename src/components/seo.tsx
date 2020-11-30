@@ -9,16 +9,14 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-type OwnProps = {
+type Props = {
     description?: string;
     lang?: string;
     meta?: any[];
     title: string;
 };
 
-type Props = OwnProps & typeof SEO.defaultProps;
-
-function SEO({ description, lang, meta, title }: Props) {
+const SEO: React.FC<Props> = ({ description = '', lang = 'en', meta = [], title }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -79,12 +77,6 @@ function SEO({ description, lang, meta, title }: Props) {
       ].concat(meta)}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 }
 
 export default SEO
